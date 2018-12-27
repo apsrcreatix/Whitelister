@@ -1,5 +1,6 @@
 package com.andro.whitelist.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.andro.whitelist.db.model.Contact
 
@@ -22,7 +23,10 @@ interface WhitelistDao {
      * Gets all the whitelist
      */
     @Query("SELECT * FROM Contact")
-    fun getWhitelists(): List<Contact>
+    fun getWhitelists(): LiveData<List<Contact>>
+
+    @Query("SELECT * FROM Contact")
+    fun getWhitelistsNonLive(): List<Contact>
 
     @Delete
     fun delete(contact: Contact)

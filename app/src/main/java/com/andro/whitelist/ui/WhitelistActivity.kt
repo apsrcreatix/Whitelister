@@ -54,10 +54,6 @@ class WhitelistActivity : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
-
     private fun getContactList() {
         val cr = contentResolver
         val cur = cr.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null)
@@ -78,7 +74,7 @@ class WhitelistActivity : AppCompatActivity() {
                     )
                     while (pCur!!.moveToNext()) {
                         val phoneNo = pCur.getString(pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                        val contact = Contact(id, name, phoneNo)
+                        val contact = Contact(id, name, phoneNo.replace("\\s".toRegex(), ""))
                         contactList.add(contact)
                     }
                     pCur.close()
@@ -90,7 +86,7 @@ class WhitelistActivity : AppCompatActivity() {
     }
 
     private fun getContactsFromDatabase(): List<Contact>? {
-        val list = database.whitelistDao().getWhitelists()
+        val list = database.whitelistDao().getWhitelistsNonLive()
         return if (list.isEmpty()) null else list
     }
 

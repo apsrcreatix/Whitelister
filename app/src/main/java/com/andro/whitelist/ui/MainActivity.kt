@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.andro.whitelist.R
@@ -65,16 +66,16 @@ class MainActivity : AppCompatActivity() {
         contact_recycler.setHasFixedSize(true)
         contactAdapter = ContactAdapter(this)
         contact_recycler.adapter = contactAdapter
-        contactAdapter?.submitList(getContactsFromDatabase())
+
+        getContactsFromDatabase()
     }
 
-    override fun onResume() {
-        super.onResume()
-        contactAdapter?.submitList(getContactsFromDatabase())
-    }
-
-    private fun getContactsFromDatabase(): List<Contact> {
-        return database.whitelistDao().getWhitelists()
+    private fun getContactsFromDatabase() {
+        val result = database.whitelistDao().getWhitelists()
+        result.observe(this, Observer {
+            contactAdapter?.submitList(it)
+            contactAdapter?.notifyDataSetChanged()
+        })
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {

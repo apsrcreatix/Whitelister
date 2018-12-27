@@ -38,6 +38,10 @@ class ContactAdapter(private val context: Context, private val checkBoxVisibilit
                 removeContact(contact)
             }
         }
+        holder.itemView.remove_contact.setOnClickListener {
+            removeContact(contact)
+            notifyDataSetChanged()
+        }
     }
 
     private fun removeContact(contact: Contact) {
@@ -55,6 +59,8 @@ class ContactAdapter(private val context: Context, private val checkBoxVisibilit
             itemView.checkbox.isChecked = previousSelectedList?.contains(contact) ?: false
             if (checkBoxVisibility) {
                 itemView.checkbox.visibility = View.VISIBLE
+            } else {
+                itemView.remove_contact.visibility = View.VISIBLE
             }
         }
     }
