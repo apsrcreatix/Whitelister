@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".ui.WhitelistActivity">
+
+	<androidx.recyclerview.widget.RecyclerView
+			android:layout_marginTop="56dp"
+			android:id="@+id/contact_recycler"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+
+	<com.google.android.material.appbar.AppBarLayout
+			android:layout_width="match_parent"
+			app:liftOnScroll="true"
+			android:layout_height="56dp" >
+
+		<androidx.appcompat.widget.Toolbar
+				app:title=" "
+				android:id="@+id/toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+			<ImageView
+					android:background="?attr/selectableItemBackgroundBorderless"
+					android:paddingEnd="10dp"
+					android:src="@drawable/ic_arrow_back_black_24dp"
+					android:id="@+id/back_button"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"/>
+
+			<TextView
+					android:textColor="@android:color/black"
+					android:textSize="22sp"
+					android:text="Select Whitelist"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"/>
+
+		</androidx.appcompat.widget.Toolbar>
+
+	</com.google.android.material.appbar.AppBarLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
