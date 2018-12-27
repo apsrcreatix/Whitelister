@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.telephony.TelephonyManager
 import android.widget.Toast
-import com.andro.whitelist.db.dao.WhitelistDao
 import com.andro.whitelist.db.handler.WhitelistDatabase
 import com.android.internal.telephony.ITelephony
 
@@ -28,7 +27,8 @@ class PhoneCallReceiver : BroadcastReceiver() {
                     Toast.makeText(context, "Call from a whitelisted caller", Toast.LENGTH_LONG).show()
                 }
             } else {
-                Toast.makeText(context, "Unable to retrieve caller number. Contact Developer.", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Unable to retrieve caller number. Contact Developer.", Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }

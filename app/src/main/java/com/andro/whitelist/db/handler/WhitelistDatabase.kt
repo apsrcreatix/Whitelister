@@ -23,7 +23,8 @@ abstract class WhitelistDatabase : RoomDatabase() {
                 synchronized(WhitelistDatabase::class) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        WhitelistDatabase::class.java, DB_NAME)
+                        WhitelistDatabase::class.java, DB_NAME
+                    )
                         .allowMainThreadQueries()
                         .fallbackToDestructiveMigration()
                         .build()

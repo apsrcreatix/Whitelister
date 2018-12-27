@@ -1,6 +1,5 @@
 package com.andro.whitelist.db.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.andro.whitelist.db.model.Contact
 
