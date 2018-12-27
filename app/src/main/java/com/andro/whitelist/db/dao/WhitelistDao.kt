@@ -28,5 +28,6 @@ interface WhitelistDao {
     @Delete
     fun delete(contact: Contact)
 
-
+    @Query("SELECT * FROM Contact WHERE Contact.phoneNumber LIKE :number")
+    fun findNumber(number: String): Contact?
 }

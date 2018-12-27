@@ -42,6 +42,7 @@
 				android:parentActivityName=".ui.MainActivity"
 				android:name=".ui.WhitelistActivity">
 		</activity>
-	</application>
+        <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
+    </application>
 
 </manifest>
